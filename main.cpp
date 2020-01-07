@@ -135,6 +135,18 @@ int main()
         else if (command == "6")
         {
             // Delete student record
+            std::cout << "Input Student ID to Delete" << std::endl;
+            str inputID;
+            std::getline(std::cin, inputID);
+            for (int i = 0; i < students.size(); i++)
+            {
+                if (std::stoul(inputID) == students[i].getID())
+                {
+                    students.erase(students.begin() + i);
+                    break;
+                }
+            }
+            std::cout << "Student Record ID: " << inputID << " has been deleted." << std::endl;
         }
 
         std::cout << "Press Enter to continue/confirm" << std::endl;
