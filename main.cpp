@@ -61,12 +61,12 @@ int main()
         {
             // Search for record by student ID
             std::cout << "Input Student ID" << std::endl;
-            uint inputID;
-            std::cin >> inputID;
+            str inputID;
+            std::getline(std::cin, inputID);
             printHeader();
             for (student student : students)
             {
-                if (inputID == student.getID())
+                if (std::stoul(inputID) == student.getID())
                 {
                     student.printData();
                     break;
@@ -78,7 +78,7 @@ int main()
             // Search for record by student name
             str lastName;
             std::cout << "Input last name of student" << std::endl;
-            std::cin >> lastName;
+            std::getline(std::cin, lastName);
             printHeader();
             for (student student : students)
             {
