@@ -1,7 +1,7 @@
 #include "./student.h"
 #include <iostream>
 
-student::student(str firstname, str lastname, uint ID, uint gradelevel, uint math, uint science, uint english, uint history, uint art)
+student::student(uint ID, str firstname, str lastname, uint gradelevel, uint math, uint science, uint english, uint history, uint art)
 {
     this->firstName = firstname;
     lastName = lastname;

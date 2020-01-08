@@ -2,3 +2,4 @@
 main.o
 student.o
 output
+students.csv
