@@ -1,5 +1,7 @@
 #include "./student.h"
-#include <iostream>
+
+#define uint unsigned int
+#define str std::string
 
 student::student(uint ID, str firstname, str lastname, uint gradelevel, uint math, uint science, uint english, uint history, uint art)
 {

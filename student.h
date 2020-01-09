@@ -1,5 +1,7 @@
-#pragma once
+#ifndef STUDENT_H__
+#define STUDENT_H__
 #include <string>
+#include <iostream>
 
 #define uint unsigned int
 #define str std::string
@@ -30,3 +32,7 @@ private:
     uint History = 0;
     uint Art = 0;
 };
+
+#undef uint
+#undef str
+#endif

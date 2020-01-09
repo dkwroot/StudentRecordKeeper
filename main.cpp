@@ -1,70 +1,27 @@
 #include "main.h"
-#include "student.h"
 
-#include <vector>
-#include <iostream>
-#include <fstream>
-
+#define uint unsigned int
+#define str std::string
 #define CLS std::cout << str(100, '\n')
-
-void printHeader()
-{
-    std::cout << "============================================================================================================" << std::endl;
-    std::cout << "||                                        STUDENT RECORDS                                                 ||" << std::endl;
-    std::cout << "============================================================================================================" << std::endl;
-}
 
 int main()
 {
     std::vector<student> students;
     std::ifstream studentDataRead("students.csv");
-    str line;
     uint studentID = 1;
-    while (std::getline(studentDataRead, line))
-    {
-        str params[9];
-        int k = 0;
-        str temp;
+    readFile(studentDataRead, students, studentID);
 
-        for (int i = 0; i < line.size(); i++)
-        {
-            if (line[i] == ',')
-            {
-                params[k] = temp;
-                k = k + 1;
-                temp.clear();
-            }
-            else
-            {
-                temp = temp + line[i];
-            }
-        }
-        if (std::stoul(params[0]) >= studentID)
-            studentID = std::stoul(params[0]) + 1;
-        params[8] = temp;
-        students.push_back(student(std::stoul(params[0]), params[1], params[2], std::stoul(params[3]), std::stoul(params[4]), std::stoul(params[5]), std::stoul(params[6]), std::stoul(params[7]), std::stoul(params[8])));
-    }
-    std::ofstream studentDatabase("students.csv");
     bool repeat = true;
     while (repeat)
     {
+        printMenu();
         str command;
-
-        std::cout << "SYSTEM MENU" << std::endl;
-        std::cout << "1. Create new student record" << std::endl;
-        std::cout << "2. Display all student records" << std::endl;
-        std::cout << "3. Search student record by ID" << std::endl;
-        std::cout << "4. Search student record by name" << std::endl;
-        std::cout << "5. Modify student record" << std::endl;
-        std::cout << "6. Delete student record" << std::endl;
-        std::cout << "7. Exit" << std::endl;
-        std::cout << "Please enter a command (1-7)" << std::endl;
         std::getline(std::cin, command);
-
         CLS;
 
         if (command == "7")
         {
+            std::ofstream studentDatabase("students.csv");
             studentDatabase.clear();
             for (int i = 0; i < students.size(); i++)
             {
@@ -92,13 +49,6 @@ int main()
                 std::cout << params[i] << std::endl;
                 std::getline(std::cin, params[i]);
             }
-            // for (int i = 0; i < 9; i++)
-            // {
-            //     studentDatabase << params[i];
-            //     if (i < 8)
-            //         studentDatabase << ',';
-            // }
-            // studentDatabase << '\n';
             students.push_back(student(studentID, params[1], params[2], std::stoul(params[3]), std::stoul(params[4]), std::stoul(params[5]), std::stoul(params[6]), std::stoul(params[7]), std::stoul(params[8])));
             studentID = studentID + 1;
         }

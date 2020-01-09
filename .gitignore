@@ -1,6 +1,7 @@
 .vscode/
 main.o
 student.o
+helpers.o
 output
 students.csv
 temp.txt
