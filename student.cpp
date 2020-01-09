@@ -3,7 +3,7 @@
 
 student::student(uint ID, str firstname, str lastname, uint gradelevel, uint math, uint science, uint english, uint history, uint art)
 {
-    this->firstName = firstname;
+    firstName = firstname;
     lastName = lastname;
     studentID = ID;
     gradeLevel = gradelevel;
@@ -12,8 +12,6 @@ student::student(uint ID, str firstname, str lastname, uint gradelevel, uint mat
     English = english;
     History = history;
     Art = art;
-
-    std::cout << "Student Created Successfully" << std::endl;
 };
 
 void student::setGradeLevel(int grade)

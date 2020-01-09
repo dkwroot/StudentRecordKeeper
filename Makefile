@@ -1,5 +1,5 @@
 all: main.o student.o
-	g++ main.o student.o -o output
+	g++ -std=c++11 main.o student.o -o output
 
 main.o: main.cpp main.h student.h
 	g++ -c main.cpp

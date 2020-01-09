@@ -17,7 +17,7 @@ void printHeader()
 int main()
 {
     std::vector<student> students;
-    std::ifstream studentDataRead("students.csv", std::fstream::app);
+    std::ifstream studentDataRead("students.csv");
     str line;
     uint studentID = 1;
     while (std::getline(studentDataRead, line))
@@ -26,7 +26,6 @@ int main()
         int k = 0;
         str temp;
 
-        // for (char &c : line)
         for (int i = 0; i < line.size(); i++)
         {
             if (line[i] == ',')
@@ -45,7 +44,7 @@ int main()
         params[8] = temp;
         students.push_back(student(std::stoul(params[0]), params[1], params[2], std::stoul(params[3]), std::stoul(params[4]), std::stoul(params[5]), std::stoul(params[6]), std::stoul(params[7]), std::stoul(params[8])));
     }
-    std::ofstream studentDatabase("students.csv", std::fstream::app);
+    std::ofstream studentDatabase("students.csv");
     bool repeat = true;
     while (repeat)
     {
@@ -66,6 +65,21 @@ int main()
 
         if (command == "7")
         {
+            studentDatabase.clear();
+            for (int i = 0; i < students.size(); i++)
+            {
+                studentDatabase << std::to_string(students[i].getID()) + ','
+                                << students[i].getLastName() + ','
+                                << students[i].getFirstName() + ','
+                                << std::to_string(students[i].getGradeLevel()) + ','
+                                << std::to_string(students[i].getGrade("Math")) + ','
+                                << std::to_string(students[i].getGrade("Science")) + ','
+                                << std::to_string(students[i].getGrade("English")) + ','
+                                << std::to_string(students[i].getGrade("History")) + ','
+                                << std::to_string(students[i].getGrade("Art"));
+                if (i < students.size() - 1)
+                    studentDatabase << '\n';
+            }
             repeat = false;
             studentDatabase.close();
         }
@@ -78,13 +92,13 @@ int main()
                 std::cout << params[i] << std::endl;
                 std::getline(std::cin, params[i]);
             }
-            for (int i = 0; i < 9; i++)
-            {
-                studentDatabase << params[i];
-                if (i < 8)
-                    studentDatabase << ',';
-            }
-            studentDatabase << '\n';
+            // for (int i = 0; i < 9; i++)
+            // {
+            //     studentDatabase << params[i];
+            //     if (i < 8)
+            //         studentDatabase << ',';
+            // }
+            // studentDatabase << '\n';
             students.push_back(student(studentID, params[1], params[2], std::stoul(params[3]), std::stoul(params[4]), std::stoul(params[5]), std::stoul(params[6]), std::stoul(params[7]), std::stoul(params[8])));
             studentID = studentID + 1;
         }
