@@ -106,9 +106,9 @@ str student::getLastName()
 void student::printData()
 {
     std::cout << "Name: "
-              << firstName
-              << ","
               << lastName
+              << ","
+              << firstName
               << " | ID:"
               << studentID
               << " | Grade:"

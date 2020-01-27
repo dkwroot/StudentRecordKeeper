@@ -48,6 +48,6 @@ void readFile(std::ifstream &file, std::vector<student> &students, uint &student
         if (std::stoul(params[0]) >= studentID)
             studentID = std::stoul(params[0]) + 1;
         params[8] = temp;
-        students.push_back(student(std::stoul(params[0]), params[1], params[2], std::stoul(params[3]), std::stoul(params[4]), std::stoul(params[5]), std::stoul(params[6]), std::stoul(params[7]), std::stoul(params[8])));
+        students.push_back(student(std::stoul(params[0]), params[2], params[1], std::stoul(params[3]), std::stoul(params[4]), std::stoul(params[5]), std::stoul(params[6]), std::stoul(params[7]), std::stoul(params[8])));
     }
 }
